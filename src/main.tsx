@@ -1,10 +1,11 @@
-import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import ruRU from 'antd/es/locale/ru_RU';
 import './index.css'
 import App from './App.tsx'
+import {ConfigProvider} from "antd";
 
 createRoot(document.getElementById('root')!).render(
-  <StrictMode>
+  <ConfigProvider locale={ruRU}>
     <App />
-  </StrictMode>,
+  </ConfigProvider>,
 )
