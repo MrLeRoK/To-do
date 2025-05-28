@@ -1,16 +1,6 @@
 import React from 'react';
-import {
-    AppstoreOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    ShopOutlined,
-    TeamOutlined,
-    UploadOutlined,
-    UserOutlined,
-    VideoCameraOutlined,
-} from '@ant-design/icons';
-import type { MenuProps } from 'antd';
-import { Layout, Menu, theme } from 'antd';
+import { Layout, theme } from 'antd';
+import Menu from "~/components/Menu/Menu";
 
 const { Header, Content, Footer, Sider } = Layout;
 
@@ -25,31 +15,39 @@ const siderStyle: React.CSSProperties = {
     scrollbarGutter: 'stable',
 };
 
-const items: MenuProps['items'] = [
-    UserOutlined,
-    VideoCameraOutlined,
-    UploadOutlined,
-    BarChartOutlined,
-    CloudOutlined,
-    AppstoreOutlined,
-    TeamOutlined,
-    ShopOutlined,
-].map((icon, index) => ({
-    key: String(index + 1),
-    icon: React.createElement(icon),
-    label: `nav ${index + 1}`,
-}));
+// const items: MenuProps['items'] = [
+//     UserOutlined,
+//     VideoCameraOutlined,
+//     UploadOutlined,
+//     BarChartOutlined,
+//     CloudOutlined,
+//     AppstoreOutlined,
+//     TeamOutlined,
+//     ShopOutlined,
+// ].map((icon, index) => ({
+//     key: String(index + 1),
+//     // icon: React.createElement(icon),
+//     label: `nav ${index + 1}`,
+// }));
 
 const App: React.FC = () => {
     const {
         token: { colorBgContainer, borderRadiusLG },
     } = theme.useToken();
 
+    // const add = async () => {
+    //     await setDoc(doc(db, "cities", "LA"), {
+    //         name: "Los Angeles",
+    //         state: "CA",
+    //         country: "USA"
+    //     });
+    // }
+
     return (
         <Layout hasSider>
             <Sider style={siderStyle}>
                 <div className="demo-logo-vertical" />
-                <Menu theme="dark" mode="inline" defaultSelectedKeys={['4']} items={items} />
+                <Menu/>
             </Sider>
             <Layout>
                 <Header style={{ padding: 0, background: colorBgContainer }} />
