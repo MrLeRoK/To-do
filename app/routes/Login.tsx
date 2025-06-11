@@ -1,11 +1,6 @@
 import { Button, Form, Input, Card, Checkbox } from 'antd';
 import {useNavigate} from "react-router";
-
-type FieldType = {
-    username?: string;
-    password?: string;
-    remember?: boolean;
-};
+import type {FieldType} from "~/types/types";
 
 function Login() {
     const navigate = useNavigate();
