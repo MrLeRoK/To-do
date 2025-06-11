@@ -1,4 +1,6 @@
+import React from "react";
+
 export interface MenuItem {
     key: string;
-    label: string;
+    label: React.ReactNode;
 }
