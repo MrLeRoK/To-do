@@ -3,6 +3,7 @@ import {useEffect, useState} from 'react'
 import {collection, getDocs} from "@firebase/firestore";
 import { db } from "../../../fb";
 import type {MenuItem} from "~/types/types";
+import {Link} from 'react-router'
 
 function Menu () {
     const [menuItems, setMenuItems] = useState<MenuItem[]>([]);
@@ -15,17 +16,22 @@ function Menu () {
                 console.log(data.docs)
                 const items = data.docs.map(item => ({
                     key: item.id,
-                    label: item.data().title || 'Заголовок потерян ))',
+                    // label: item.data().title || 'Заголовок потерян ))',
+                    label: (
+                        <Link to={`/notes/${item.id}`}>
+                            {item.data().title || 'Заголовок потерян ))'}
+                        </Link>
+                    ),
                 }))
                 setMenuItems(items)
-                setLoading(false);
+                // setLoading(false);
             } catch (error) {
                 console.error('Ошибка при загрузке меню:', error);
+                // setLoading(false);
+            }
+            finally {
                 setLoading(false);
             }
-            // finally {
-            //     setLoading(false);
-            // } // как лучше, спросить у Дамира
         };
 
         fetchMenu();
@@ -33,7 +39,7 @@ function Menu () {
 
     return loading ? (
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
-            <Spin tip="Загрузка меню..." />
+            <Spin />
         </div>
     ) : (
         <AntMenu
