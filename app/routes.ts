@@ -16,7 +16,10 @@ export default [
             route(":id", "./routes/Notes.tsx"),
         ]),
     ]),
-    layout("./layout/AuthLayout.tsx", [
-        route(":id", "routes/Login.tsx"),
+    ...prefix("login", [
+        // index("./routes/NotesHome.tsx"), // нужно до делать 
+        layout("./layout/AuthLayout.tsx", [
+            route("login", "routes/Login.tsx"),
+        ]),
     ]),
 ] satisfies RouteConfig;
